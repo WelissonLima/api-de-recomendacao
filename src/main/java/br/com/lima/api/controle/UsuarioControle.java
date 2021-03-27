@@ -52,7 +52,7 @@ public class UsuarioControle {
 
 		return usuarioRepositorio.save(usuario);
 	}
-
+	
 	@PutMapping("/{usuarioId}")
 	public ResponseEntity<Usuario> atualizar(@Valid @PathVariable Long usuarioId, @RequestBody Usuario usuario) {
 

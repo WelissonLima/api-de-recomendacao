@@ -1,13 +1,21 @@
 package br.com.lima.dominio.modelo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
+@Table(name = "usuario")
 public class Usuario {
 
 	@Id
@@ -25,6 +33,10 @@ public class Usuario {
 	@NotBlank
 	@Size(max = 20)
 	private String telefone;
+
+	@OneToMany(mappedBy = "usuario")
+	@JsonIgnore
+	private Set<UsuarioFilme> usuarioFilmes = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -56,6 +68,14 @@ public class Usuario {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public Set<UsuarioFilme> getUsuarioFilmes() {
+		return usuarioFilmes;
+	}
+
+	public void setUsuarioFilmes(Set<UsuarioFilme> usuarioFilmes) {
+		this.usuarioFilmes = usuarioFilmes;
 	}
 
 	@Override
