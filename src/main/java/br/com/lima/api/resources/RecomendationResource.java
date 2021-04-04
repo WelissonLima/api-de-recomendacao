@@ -1,4 +1,4 @@
-package br.com.lima.controller;
+package br.com.lima.api.resources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,46 +11,46 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.lima.entities.Usuario;
+import br.com.lima.api.entities.User;
+import br.com.lima.api.repositories.FilmRepository;
+import br.com.lima.api.repositories.UserRepository;
+import br.com.lima.api.services.SimilarityService;
 import br.com.lima.model.FilmeResumoModelo;
 import br.com.lima.model.RecomendacaoModelo;
-import br.com.lima.repository.FilmeRepositorio;
-import br.com.lima.repository.UsuarioRepositorio;
-import br.com.lima.service.SimilaridadeServico;
 
 @Controller
-@RequestMapping("/recomendacao")
-public class RecomendacaoControle extends SimilaridadeServico {
+@RequestMapping("/recomendation")
+public class RecomendationResource extends SimilarityService {
 
 	@Autowired
-	private FilmeRepositorio filmeRepositorio;
+	private FilmRepository filmRepository;
 
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
+	private UserRepository userRepository;
 
 	@GetMapping("/{usuarioId}")
 	public ResponseEntity<List<RecomendacaoModelo>> recomendacao(@PathVariable Long usuarioId) {
 
-		List<Usuario> usuarios = usuarioRepositorio.findAll();
-		Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(usuarioId);
+		List<User> usuarios = userRepository.findAll();
+		Optional<User> usuarioExistente = userRepository.findById(usuarioId);
 
 		if (usuarioExistente.isPresent()) {
 
-			Usuario usuario1 = usuarioExistente.get();
+			User usuario1 = usuarioExistente.get();
 
-			List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getUsuarioFilmes());
+			List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getFilms());
 			List<RecomendacaoModelo> recomendacao = new ArrayList<>();
 
-			for (Usuario usuario2 : usuarios) {
-				List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getUsuarioFilmes());
+			for (User usuario2 : usuarios) {
+				List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getFilms());
 
 				Double similaridade = getEuclidiana(usuario1, usuario2);
 
 				for (FilmeResumoModelo filme : listaFilmesUsuario1) {
 					if (!listaFilmesUsuario2.contains(filme)) {
-						Double nota = similaridade * filme.getNota();
-						RecomendacaoModelo recomendacaoFilme = new RecomendacaoModelo(usuario2.getNome(),
-								filme.getFilme().getNome(), nota);
+						Double nota = similaridade * filme.getNote();
+						RecomendacaoModelo recomendacaoFilme = new RecomendacaoModelo(usuario2.getName(),
+								filme.getFilme().getName(), nota);
 
 						recomendacao.add(recomendacaoFilme);
 					}

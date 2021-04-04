@@ -9,13 +9,13 @@ public class UsuarioFilmeOutputModel {
 	private Long id;
 
 	@NotBlank
-	private String usuario;
+	private String user;
 
 	@NotBlank
-	private String filme;
+	private String film;
 
 	@NotNull
-	private Integer nota;
+	private Double note;
 
 	public Long getId() {
 		return id;
@@ -25,27 +25,29 @@ public class UsuarioFilmeOutputModel {
 		this.id = id;
 	}
 
-	public String getFilme() {
-		return filme;
+	public String getFilm() {
+		return film;
 	}
 
-	public void setFilme(String filme) {
-		this.filme = filme;
+	public void setFilme(String film) {
+		this.film = film;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getUser() {
+		return user;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
-	public Integer getNota() {
-		return nota;
+	public Double getNote() {
+		return note;
 	}
 
-	public void setNota(Integer nota) {
-		this.nota = nota;
+	public void setNote(Double note) {
+		this.note = note;
 	}
+
+	
 }

@@ -1,4 +1,4 @@
-package br.com.lima.controller;
+package br.com.lima.api.resources;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.lima.entities.Usuario;
+import br.com.lima.api.entities.User;
+import br.com.lima.api.repositories.UserRepository;
+import br.com.lima.api.services.SimilarityService;
 import br.com.lima.model.SimilaridadeOutputModelo;
-import br.com.lima.repository.UsuarioRepositorio;
-import br.com.lima.service.SimilaridadeServico;
 
 @Controller
-@RequestMapping("/similaridade")
-public class SimilaridadeControle extends SimilaridadeServico {
+@RequestMapping("/similarity")
+public class SimilarityResource extends SimilarityService{
 
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
+	private UserRepository userRepository;
 
 	@GetMapping("/{usuarioId}")
 	public ResponseEntity<List<SimilaridadeOutputModelo>> listar(@PathVariable Long usuarioId) {
-		Optional<Usuario> usuarioExistente1 = usuarioRepositorio.findById(usuarioId);
-		List<Usuario> usuarios = usuarioRepositorio.findAll();
+		Optional<User> usuarioExistente1 = userRepository.findById(usuarioId);
+		List<User> usuarios = userRepository.findAll();
 
 		if (usuarioExistente1.isPresent()) {
-			Usuario usuario = usuarioExistente1.get();
+			User usuario = usuarioExistente1.get();
 			
 			List<SimilaridadeOutputModelo> similaridadeUsuarios = getSimilaridadeGeral(usuario, usuarios);
 			

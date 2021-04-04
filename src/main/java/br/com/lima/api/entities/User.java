@@ -1,5 +1,6 @@
-package br.com.lima.entities;
+package br.com.lima.api.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,8 +16,10 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "filme")
-public class Filme {
+@Table(name = "usuario")
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +27,31 @@ public class Filme {
 
 	@NotBlank
 	@Size(max = 60)
-	private String nome;
+	private String name;
 
+	@NotBlank
+	@Size(max = 255)
+	private String email;
+
+	@NotBlank
+	@Size(max = 20)
+	private String phone;
+
+	@OneToMany(mappedBy = "id.film")
 	@JsonIgnore
-	@OneToMany(mappedBy = "filme")
-	private Set<UsuarioFilme> usuarioFilmes = new HashSet<>();
+	private Set<FilmUser> films = new HashSet<>();
+
+	public User() {
+
+	}
+
+	public User(Long id, String name, String email, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,20 +61,36 @@ public class Filme {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Set<UsuarioFilme> getUsuarioFilmes() {
-		return usuarioFilmes;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsuarioFilmes(Set<UsuarioFilme> usuarioFilmes) {
-		this.usuarioFilmes = usuarioFilmes;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Set<FilmUser> getFilms() {
+		return films;
+	}
+
+	public void setFilmUser(Set<FilmUser> films) {
+		this.films = films;
 	}
 
 	@Override
@@ -70,7 +109,7 @@ public class Filme {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Filme other = (Filme) obj;
+		User other = (User) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -78,7 +117,4 @@ public class Filme {
 			return false;
 		return true;
 	}
-	
-	
-
 }

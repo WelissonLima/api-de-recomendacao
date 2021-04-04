@@ -3,37 +3,37 @@ package br.com.lima.model;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.lima.entities.Filme;
+import br.com.lima.api.entities.Film;
 
 public class FilmeResumoModelo {
 
 	@NotNull
-	private int nota;
+	private Double note;
 
 	@NotBlank
-	private Filme filme;
+	private Film film;
 
-	public int getNota() {
-		return nota;
+	public Double getNote() {
+		return note;
 	}
 
-	public void setNota(int nota) {
-		this.nota = nota;
+	public void setNote(Double note) {
+		this.note = note;
 	}
 
-	public Filme getFilme() {
-		return filme;
+	public Film getFilme() {
+		return film;
 	}
 
-	public void setFilme(Filme filme) {
-		this.filme = filme;
+	public void setFilm(Film film) {
+		this.film = film;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((filme == null) ? 0 : filme.hashCode());
+		result = prime * result + ((film == null) ? 0 : film.hashCode());
 		return result;
 	}
 
@@ -46,10 +46,10 @@ public class FilmeResumoModelo {
 		if (getClass() != obj.getClass())
 			return false;
 		FilmeResumoModelo other = (FilmeResumoModelo) obj;
-		if (filme == null) {
-			if (other.filme != null)
+		if (film == null) {
+			if (other.film != null)
 				return false;
-		} else if (!filme.equals(other.filme))
+		} else if (!film.equals(other.film))
 			return false;
 		return true;
 	}

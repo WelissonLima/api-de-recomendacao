@@ -2,10 +2,10 @@ package br.com.lima.model;
 
 import javax.validation.constraints.NotNull;
 
-public class UsuarioFilmeInputModelo {
+public class UserFilmInputModel {
 
 	@NotNull
-	private Integer nota;
+	private Double note;
 
 	@NotNull
 	private Long filme_id;
@@ -13,12 +13,12 @@ public class UsuarioFilmeInputModelo {
 	@NotNull
 	private Long usuario_id;
 
-	public Integer getNota() {
-		return nota;
+	public Double getNote() {
+		return note;
 	}
 
-	public void setNota(Integer nota) {
-		this.nota = nota;
+	public void setNote(Double note) {
+		this.note = note;
 	}
 
 	public Long getFilme_id() {
@@ -36,4 +36,5 @@ public class UsuarioFilmeInputModelo {
 	public void setUsuario_id(Long usuario_id) {
 		this.usuario_id = usuario_id;
 	}
+
 }
