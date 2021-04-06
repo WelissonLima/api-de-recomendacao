@@ -1,6 +1,5 @@
 package br.com.lima.api.controle;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,21 +37,8 @@ public class UsuarioFilmeControle {
 	private FilmeRepositorio filmeRepositorio;
 
 	@GetMapping()
-	public List<UsuarioFilmeOutputModel> listar() {
-		List<UsuarioFilme> usuarioFilmes = usuarioFilmeRepositorio.findAll();
-		List<UsuarioFilmeOutputModel> usuarioFilmeOutputModels = new ArrayList<>();
-		
-		for (UsuarioFilme usFilme : usuarioFilmes) {
-			UsuarioFilmeOutputModel usuarioFilmeOutputModel = new UsuarioFilmeOutputModel();
-			usuarioFilmeOutputModel.setId(usFilme.getId());
-			usuarioFilmeOutputModel.setFilme(usFilme.getFilme().getNome());
-			usuarioFilmeOutputModel.setUsuario(usFilme.getUsuario().getNome());
-			usuarioFilmeOutputModel.setNota(usFilme.getNota());
-			
-			usuarioFilmeOutputModels.add(usuarioFilmeOutputModel);
-		}
-		
-		return usuarioFilmeOutputModels;
+	public List<UsuarioFilme> listar() {
+		return usuarioFilmeRepositorio.findAll();
 	}
 
 	@GetMapping("/{usuarioFilmeId}")
@@ -96,4 +82,29 @@ public class UsuarioFilmeControle {
 
 		return ResponseEntity.notFound().build();
 	}
+	
+//	@PutMapping("/{usuarioId}")
+//	public ResponseEntity<Usuario> atualizar(@Valid @PathVariable Long usuarioId, @RequestBody Usuario usuario) {
+//
+//		if (!usuarioFilmeRepositorio.existsById(usuarioId)) {
+//			return ResponseEntity.notFound().build();
+//		}
+//
+//		usuario.setId(usuarioId);
+//		usuario = usuarioFilmeRepositorio.save(usuario);
+//
+//		return ResponseEntity.ok(usuario);
+//	}
+//	
+//	@DeleteMapping("/{usuarioId}")
+//	public ResponseEntity<Usuario> deletar(@PathVariable Long usuarioId){
+//		
+//		if(!usuarioFilmeRepositorio.existsById(usuarioId)) {
+//			throw new RuntimeException("Esse usuário não existe.");
+//		}
+//		
+//		usuarioFilmeRepositorio.deleteById(usuarioId);
+//		
+//		return ResponseEntity.noContent().build();
+//	}
 }
