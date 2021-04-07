@@ -30,6 +30,16 @@ public class Filme {
 	@OneToMany(mappedBy = "filme")
 	private Set<UsuarioFilme> usuarioFilmes = new HashSet<>();
 
+	public Filme() {
+		super();
+	}
+
+	public Filme(Long id, @NotBlank @Size(max = 60) String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Long getId() {
 		return id;
 	}

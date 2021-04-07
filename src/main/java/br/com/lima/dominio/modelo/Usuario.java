@@ -33,6 +33,23 @@ public class Usuario {
 	@NotBlank
 	@Size(max = 20)
 	private String telefone;
+	
+	public Usuario () {
+		super();
+	}
+	
+	
+
+	public Usuario(Long id, @NotBlank @Size(max = 60) String nome, @NotBlank @Size(max = 255) String email,
+			@NotBlank @Size(max = 20) String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+	}
+
+
 
 	@OneToMany(mappedBy = "usuario")
 	@JsonIgnore

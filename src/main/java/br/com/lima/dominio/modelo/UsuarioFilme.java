@@ -25,6 +25,22 @@ public class UsuarioFilme {
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
+	
+	public UsuarioFilme() {
+		super();
+	}
+
+	
+	
+	public UsuarioFilme(Long id, @NotNull Integer nota, Filme filme, Usuario usuario) {
+		super();
+		this.id = id;
+		this.nota = nota;
+		this.filme = filme;
+		this.usuario = usuario;
+	}
+
+
 
 	public Long getId() {
 		return id;
