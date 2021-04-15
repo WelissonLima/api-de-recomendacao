@@ -44,18 +44,24 @@ public class TesteConfig implements CommandLineRunner {
 		Filme film7 = new Filme(null, "Aquaman");
 		Filme film8 = new Filme(null, "Invocação do Mal");
 
-		UsuarioFilme fu1 = new UsuarioFilme(null, 6, film1, u1);
-		UsuarioFilme fu2 = new UsuarioFilme(null, 5, film2, u2);
-		UsuarioFilme fu3 = new UsuarioFilme(null, 7, film3, u3);
-		UsuarioFilme fu4 = new UsuarioFilme(null, 4, film4, u4);
-		UsuarioFilme fu5 = new UsuarioFilme(null, 9, film3, u1);
+		UsuarioFilme fu1 = new UsuarioFilme(null, 5, film1, u1);
+		UsuarioFilme fu5 = new UsuarioFilme(null, 4, film3, u1);
+		
 		UsuarioFilme fu6 = new UsuarioFilme(null, 2, film4, u2);
-		UsuarioFilme fu7 = new UsuarioFilme(null, 4, film5, u3);
-		UsuarioFilme fu8 = new UsuarioFilme(null, 3, film8, u4);
+		UsuarioFilme fu2 = new UsuarioFilme(null, 5, film2, u2);
+		UsuarioFilme fu9 = new UsuarioFilme(null, 5, film1, u2);
 
+		UsuarioFilme fu3 = new UsuarioFilme(null, 2, film3, u3);
+		UsuarioFilme fu7 = new UsuarioFilme(null, 4, film5, u3);
+		UsuarioFilme fu10 = new UsuarioFilme(null, 5, film2, u3);
+		
+		UsuarioFilme fu4 = new UsuarioFilme(null, 4, film4, u4);
+		UsuarioFilme fu8 = new UsuarioFilme(null, 3, film8, u4);
+		UsuarioFilme fu11 = new UsuarioFilme(null, 5, film5, u4);
+		
 		user.saveAll(Arrays.asList(u1, u2, u3, u4));
 		film.saveAll(Arrays.asList(film1, film2, film3, film4, film5, film6, film7, film8));
-		user_film.saveAll(Arrays.asList(fu1, fu2, fu3, fu4, fu5, fu6, fu7, fu8));
+		user_film.saveAll(Arrays.asList(fu1, fu2, fu3, fu4, fu5, fu6, fu7, fu8, fu9, fu10, fu11));
 
 	}
 
