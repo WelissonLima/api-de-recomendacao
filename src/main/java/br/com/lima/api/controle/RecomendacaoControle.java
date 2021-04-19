@@ -13,17 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.lima.api.modelo.FilmeResumoModelo;
 import br.com.lima.api.modelo.RecomendacaoModelo;
+import br.com.lima.dominio.modelo.Filme;
 import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.repositorio.FilmeRepositorio;
 import br.com.lima.dominio.repositorio.UsuarioRepositorio;
 import br.com.lima.dominio.servico.SimilaridadeServico;
 
 @Controller
 @RequestMapping("/recomendacao")
 public class RecomendacaoControle extends SimilaridadeServico {
-
-	@Autowired
-	private FilmeRepositorio filmeRepositorio;
 
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
@@ -47,12 +44,17 @@ public class RecomendacaoControle extends SimilaridadeServico {
 				Double similaridade = getEuclidiana(usuario1, usuario2);
 
 				for (FilmeResumoModelo filme : listaFilmesUsuario1) {
+
 					if (!listaFilmesUsuario2.contains(filme)) {
 						Double nota = similaridade * filme.getNota();
-						RecomendacaoModelo recomendacaoFilme = new RecomendacaoModelo(usuario2.getNome(),
-								filme.getFilme().getNome(), nota);
 
-						recomendacao.add(recomendacaoFilme);
+						if (nota > 0) {
+							RecomendacaoModelo recomendacaoFilme = new RecomendacaoModelo(usuario2.getNome(),
+									filme.getFilme().getNome(), nota);
+
+							recomendacao.add(recomendacaoFilme);
+						}
+
 					}
 				}
 

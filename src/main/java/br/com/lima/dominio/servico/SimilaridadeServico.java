@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.lima.api.modelo.FilmeResumoModelo;
@@ -12,21 +11,9 @@ import br.com.lima.api.modelo.SimilaridadeOutputModelo;
 import br.com.lima.dominio.modelo.Filme;
 import br.com.lima.dominio.modelo.Usuario;
 import br.com.lima.dominio.modelo.UsuarioFilme;
-import br.com.lima.dominio.repositorio.FilmeRepositorio;
-import br.com.lima.dominio.repositorio.UsuarioFilmeRepositorio;
-import br.com.lima.dominio.repositorio.UsuarioRepositorio;
 
 @Service
 public class SimilaridadeServico {
-
-	@Autowired
-	private FilmeRepositorio filmeRepositorio;
-
-	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
-
-	@Autowired
-	private UsuarioFilmeRepositorio usuarioFilmeRepositorio;
 
 	public List<FilmeResumoModelo> buscarFilmes(Set<UsuarioFilme> usuarioFilmes) {
 		List<FilmeResumoModelo> filmes = new ArrayList<>();
