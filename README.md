@@ -5,11 +5,11 @@ API de Recomendação de Filmes
 </h1></i></b>
 
 <h2>
-Baseando-se nos filmes que você viu e nas notas que deu para eles, iremos indica-lo filmes que você possa gostar.
+Baseando-se nos filmes que você viu e nas notas que deu para cada um deles, iremos te indicar filmes baseados no seu gosto.
 </h2>
 
 <h3>
-Técnologias utilizadas:
+Tecnologias utilizadas no projeto:
 </h3>
 <p>
 - Java 11 <br>
@@ -41,13 +41,13 @@ Endpoints
 
 | Método  |  URL  | Descrição  |
 | ------------------- | ------------------- | -------------------- |
-| GET  | http://localhost:8080/usuarios | Listar os usuário. |
-| POST | http://localhost:8080/usuarioso | Adicionar Usuario |
-| PUT | http://localhost:8080/usuarios | Atualizar um usuário. |
+| GET  | http://localhost:8080/usuarios | Listar os usuários. |
+| POST | http://localhost:8080/usuarioso | Adicionar um novo Usuario |
+| PUT | http://localhost:8080/usuarios | Atualizar os dados de um  usuário. |
 | DELETE | http://localhost:8080/usuarios | Deletar um usuário. |
-| GET |  http://localhost:8080/usuarios/{usuarioID} | Lista os filmes de um usuário. |
-| GET |  http://localhost:8080/filmes | Listar os filme |
-| POST |  http://localhost:8080/filmes | Adicionar um filme |
+| GET |  http://localhost:8080/usuarios/{usuarioID} | Listar os filmes de um determinado usuário. |
+| GET |  http://localhost:8080/filmes | Listar Todos os filmes|
+| POST |  http://localhost:8080/filmes | Adicionar um novo filme |
 | PUT |  http://localhost:8080/filmes | Atualizar um filme |
 | DELETE |  http://localhost:8080/filmes | Deletar um filme |
 | GET |  http://localhost:8080/similaridade/{usuarioID} | Mostra a similaridade de um usuário com os outros |
