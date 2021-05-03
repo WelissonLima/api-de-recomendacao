@@ -30,8 +30,8 @@ public class SimilaridadeServico {
 	}
 
 	public double getEuclidiana(Usuario usuario1, Usuario usuario2) {
-		List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getUsuarioFilmes());
-		List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getUsuarioFilmes());
+		List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getFilmes());
+		List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getFilmes());
 
 		return getSimilaridade(listaFilmesUsuario1, listaFilmesUsuario2);
 
@@ -42,11 +42,11 @@ public class SimilaridadeServico {
 		int verificacao = 0;
 		for (FilmeResumoModelo filmeResumo1 : user1) {
 			Filme filme1 = filmeResumo1.getFilme();
-			int nota1 = filmeResumo1.getNota();
+			Double nota1 = filmeResumo1.getNota();
 
 			for (FilmeResumoModelo filmeResumo2 : user2) {
 				Filme filme2 = filmeResumo2.getFilme();
-				int nota2 = filmeResumo2.getNota();
+				Double nota2 = filmeResumo2.getNota();
 
 				if (filme1.equals(filme2)) {
 					soma += Math.pow((nota1 - nota2), 2);
@@ -65,10 +65,10 @@ public class SimilaridadeServico {
 	public List<SimilaridadeOutputModelo> getSimilaridadeGeral(Usuario usuario, List<Usuario> usuarios) {
 
 		List<SimilaridadeOutputModelo> similaridadeUsuarios = new ArrayList<>();
-		List<FilmeResumoModelo> filmeResumoModelos1 = buscarFilmes(usuario.getUsuarioFilmes());
+		List<FilmeResumoModelo> filmeResumoModelos1 = buscarFilmes(usuario.getFilmes());
 
 		for (Usuario usuario2 : usuarios) {
-			List<FilmeResumoModelo> filmeResumoModelos2 = buscarFilmes(usuario2.getUsuarioFilmes());
+			List<FilmeResumoModelo> filmeResumoModelos2 = buscarFilmes(usuario2.getFilmes());
 			double euclidiana = getSimilaridade(filmeResumoModelos1, filmeResumoModelos2);
 
 			SimilaridadeOutputModelo similaridadeOutputModelo = new SimilaridadeOutputModelo(usuario2.getId(),

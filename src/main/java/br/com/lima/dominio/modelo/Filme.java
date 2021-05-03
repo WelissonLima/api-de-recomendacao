@@ -1,5 +1,6 @@
 package br.com.lima.dominio.modelo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,32 +10,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "filme")
-public class Filme {
+@Table(name = "tb_filme") // PQ ORDER É DA CLASSE JAVA E PODE DAR CONFLITO, ENTÃO RENOMEIA A TB
+public class Filme implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotBlank
-	@Size(max = 60)
 	private String nome;
+	
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "filme")
+    @JsonIgnore
+	@OneToMany(mappedBy = "id.filme")
 	private Set<UsuarioFilme> usuarioFilmes = new HashSet<>();
-
+	
 	public Filme() {
 		super();
 	}
-
-	public Filme(Long id, @NotBlank @Size(max = 60) String nome) {
+	
+	public Filme(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -55,13 +54,11 @@ public class Filme {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
 
 	public Set<UsuarioFilme> getUsuarioFilmes() {
 		return usuarioFilmes;
-	}
-
-	public void setUsuarioFilmes(Set<UsuarioFilme> usuarioFilmes) {
-		this.usuarioFilmes = usuarioFilmes;
 	}
 
 	@Override
@@ -88,5 +85,7 @@ public class Filme {
 			return false;
 		return true;
 	}
-
+	
+	
+	
 }

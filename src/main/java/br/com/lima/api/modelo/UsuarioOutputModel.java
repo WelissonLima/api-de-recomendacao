@@ -1,10 +1,10 @@
 package br.com.lima.api.modelo;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+import com.sun.istack.NotNull;
+
+import br.com.lima.dominio.modelo.Usuario;
 
 public class UsuarioOutputModel {
 
@@ -13,17 +13,22 @@ public class UsuarioOutputModel {
 
 	@NotBlank
 	private String nome;
-
+	
 	@NotBlank
-	private Set<FilmeOutput> filmes = new HashSet<FilmeOutput>();
+	private String email;
+	
+	@NotBlank
+	private String telefone;
+
 
 	public UsuarioOutputModel() {
 	}
 
-	public UsuarioOutputModel(@NotNull Long id, @NotBlank String nome, Set<FilmeOutput> filmes) {
-		this.id = id;
-		this.nome = nome;
-		this.filmes = filmes;
+	public UsuarioOutputModel(Usuario obj) {
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.email= obj.getEmail();
+		this.telefone = obj.getTelefone();
 	}
 
 	public Long getId() {
@@ -42,12 +47,22 @@ public class UsuarioOutputModel {
 		this.nome = nome;
 	}
 
-	public Set<FilmeOutput> getFilmes() {
-		return filmes;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setFilmes(Set<FilmeOutput> filmes) {
-		this.filmes = filmes;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	
 
 }

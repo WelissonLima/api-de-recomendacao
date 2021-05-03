@@ -33,12 +33,12 @@ public class RecomendacaoControle extends SimilaridadeServico {
 
 		if (usuarioExistente.isPresent()) {
 			Usuario usuario1 = usuarioExistente.get();
-			List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getUsuarioFilmes());
+			List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getFilmes());
 			Double mediaNotas = getMediaDasNotas(listaFilmesUsuario1);
 
 			for (Usuario usuario2 : usuarios) {
 				if (!usuario1.equals(usuario2)) {
-					List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getUsuarioFilmes());
+					List<FilmeResumoModelo> listaFilmesUsuario2 = buscarFilmes(usuario2.getFilmes());
 
 					Double similaridade = getEuclidiana(usuario1, usuario2);
 
