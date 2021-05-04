@@ -25,8 +25,8 @@ public class FilmeServico {
 	}
 
 	public Filme create(Filme filme) {
-		return repositorio.save(new Filme(null, filme.getNome()));
-
+		return repositorio.save(new Filme(null, filme.getNome(), filme.getSinopse()));
+			
 	}
 
 	public void delete(Long id) {

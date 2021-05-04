@@ -1,6 +1,7 @@
 package br.com.lima.dominio.modelo;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class Filme implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	
+	private URL sinopse;
 
     @JsonIgnore
 	@OneToMany(mappedBy = "id.filme")
@@ -33,10 +34,11 @@ public class Filme implements Serializable {
 		super();
 	}
 	
-	public Filme(Long id, String nome) {
+	public Filme(Long id, String nome, URL sinopse) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.sinopse = sinopse;
 	}
 
 	public Long getId() {
@@ -54,8 +56,14 @@ public class Filme implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
+	public URL getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(URL sinopse) {
+		this.sinopse = sinopse;
+	}
 
 	public Set<UsuarioFilme> getUsuarioFilmes() {
 		return usuarioFilmes;
