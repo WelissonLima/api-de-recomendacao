@@ -1,39 +1,59 @@
 ![Captura de Tela 2021-04-16 às 13 27 04](https://user-images.githubusercontent.com/62679423/115055736-3ed13080-9eb8-11eb-8b94-8282df27b68c.png)
 
-<h1><b><i>
-Recomendação de Filmes (API)
-</h1></i></b>
+# Recomendação de Filmes (API)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/WelissonLima/api-de-recomendacao/blob/master/LICENSE)
 
-<h2>
-Baseando-se nos filmes que você viu e nas notas que deu para cada um deles, iremos te indicar filmes baseados no seu gosto.
-</h2>
 
-<h3>
-Tecnologias utilizadas no projeto:
-</h3>
-<p>
-- Java 11 <br>
-- H2 Database<br>
-- Spring boot 2.4.4
-</p>
+# Sobre o projeto
 
-<h3>
-Como rodar o projeto ?
-</h3>
-<p>
-Linux(Terminal):<br>
-<b>java -jar projeto.jar</b><br><br>
+(colocar link do projeto no Heroku - quando estiver lá)
 
-MacOS(Terminal):<br>
-<b>java -jar projeto.jar</b><br><br>
+Recomendação de Filmes é uma aplicação backEnd construída durante o 4° semestre da Faculdade, na Disciplina de Programação Orientada a Objetos.
 
-Windows(CMD):<br>
-<b>java -jar projeto.jar</b><br><br>
-</p>
+A aplicação consiste em fazer uma recomendação de filmes, assistidos por um determinado usuário, baseando-se na similaridade que houver entre o que recomenda, e o que vai recebeer a recomendação. A similaridade entre os usuários será feita com base nas semelhanças entre as notas que os usuários darão para os Filmes assistidos. Dessa forma a API irá recomendar um filme fundamentado no seu gosto.
 
-<b><i>
-Obs.: O projeto irá rodar na porta 8080.
-</i></b>
+
+# Tecnologias utilizadas 
+
+## BackEnd
+- Java (versão 11)
+-  Spring Boot (versão 2.4.4)
+-  JPA/ Hibernate
+-  Maven
+-  H2 Database
+
+## Implantação em Produção
+- BackEnd: Heroku (Ao finalizar o projeto)
+- Banco de dados: MySQL
+
+#Como executar o projeto
+
+## BackEnd
+Pré-requisitos: Java 11
+
+### 1ª Opção: Rodar direto pelo prompt
+
+```bash
+# clonar o repositório do projeto
+git clone https://github.com/WelissonLima/api-de-recomendacao.git
+
+# entrar na pasta onde foi feita a clonagem, e abrir um promt local dentro do projeto (git bash - pra quem tem)
+cd nome-projeto
+
+#executar o projeto com o seguinte código:
+
+# Windows
+java -jar projeto.jar
+
+# Linux
+java -jar projeto.jar
+
+# MacOS
+java -jar projeto.jar
+
+```
+### <i>ATENÇÃO: Por Padrão, o projeto irá rodar na porta 8080. (localhost:8080)</i>
+
 
 <h2><b>
 Endpoints
