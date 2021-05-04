@@ -1,4 +1,4 @@
-![Captura de Tela 2021-04-16 às 13 27 04](https://user-images.githubusercontent.com/62679423/115055736-3ed13080-9eb8-11eb-8b94-8282df27b68c.png)
+![Imagem 1](https://github.com/WelissonLima/api-de-recomendacao/blob/master/assets/imagem1.png)
 
 # Recomendação de Filmes (API)
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/WelissonLima/api-de-recomendacao/blob/master/LICENSE)
