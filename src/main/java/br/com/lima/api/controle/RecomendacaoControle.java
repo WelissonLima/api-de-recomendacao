@@ -28,10 +28,11 @@ public class RecomendacaoControle extends SimilaridadeServico {
 	public ResponseEntity<List<RecomendacaoModelo>> recomendacao(@PathVariable Long usuarioId) {
 
 		List<Usuario> usuarios = usuarioRepositorio.findAll();
-		List<RecomendacaoModelo> recomendacao = new ArrayList<>();
+		List<RecomendacaoModelo> recomendacoes = new ArrayList<>();
 		Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(usuarioId);
 
 		if (usuarioExistente.isPresent()) {
+
 			Usuario usuario1 = usuarioExistente.get();
 			List<FilmeResumoModelo> listaFilmesUsuario1 = buscarFilmes(usuario1.getUsuarioFilmes());
 			Double mediaNotas = getMediaDasNotas(listaFilmesUsuario1);
@@ -42,22 +43,14 @@ public class RecomendacaoControle extends SimilaridadeServico {
 
 					Double similaridade = getEuclidiana(usuario1, usuario2);
 
-					for (FilmeResumoModelo filme : listaFilmesUsuario2) {
-						if (!listaFilmesUsuario1.contains(filme)) {
-							Double nota = similaridade * filme.getNota();
-
-							if (nota >= mediaNotas) {
-								RecomendacaoModelo recomendacaoFilme = new RecomendacaoModelo(usuario2.getNome(),
-										filme.getFilme().getNome(), nota);
-
-								recomendacao.add(recomendacaoFilme);
-							}
-						}
-					}
+					listaFilmesUsuario2.stream().filter(filme1 -> !listaFilmesUsuario1.contains(filme1))
+							.filter(filme2 -> filme2.getNota() * similaridade >= mediaNotas)
+							.forEach(filme3 -> recomendacoes.add(new RecomendacaoModelo(usuario2.getNome(),
+									filme3.getFilme().getNome(), filme3.getNota() * similaridade)));
 				}
 			}
 
-			return ResponseEntity.ok(recomendacao);
+			return ResponseEntity.ok(recomendacoes);
 		}
 
 		return ResponseEntity.notFound().build();
@@ -70,7 +63,6 @@ public class RecomendacaoControle extends SimilaridadeServico {
 		}
 
 		Double media = filmes.stream().mapToDouble(filme -> filme.getNota()).sum();
-
 		return (media / filmes.size()) * 0.9;
 	}
 }
