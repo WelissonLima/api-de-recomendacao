@@ -1,5 +1,7 @@
 package br.com.lima.dominio.modelo;
 
+
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,51 +11,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+@Table(name = "tb_usuario")
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@NotBlank
-	@Size(max = 60)
 	private String nome;
-
-	@NotBlank
-	@Size(max = 255)
 	private String email;
-
-	@NotBlank
-	@Size(max = 20)
 	private String telefone;
-	
-	public Usuario () {
-		super();
-	}
-	
-	
 
-	public Usuario(Long id, @NotBlank @Size(max = 60) String nome, @NotBlank @Size(max = 255) String email,
-			@NotBlank @Size(max = 20) String telefone) {
-		super();
+	@OneToMany(mappedBy = "id.usuario") //ID pega na classe UsuarioFilme
+	private Set<UsuarioFilme> filmes = new HashSet<>();
+	
+	
+	public Usuario() {
+
+	}
+
+	public Usuario(Long id, String nome, String email, String telefone) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 	}
-
-
-
-	@OneToMany(mappedBy = "usuario")
-	@JsonIgnore
-	private Set<UsuarioFilme> usuarioFilmes = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -87,12 +72,10 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 
-	public Set<UsuarioFilme> getUsuarioFilmes() {
-		return usuarioFilmes;
-	}
+	
 
-	public void setUsuarioFilmes(Set<UsuarioFilme> usuarioFilmes) {
-		this.usuarioFilmes = usuarioFilmes;
+	public Set<UsuarioFilme> getFilmes() {
+		return filmes;
 	}
 
 	@Override
@@ -119,4 +102,7 @@ public class Usuario {
 			return false;
 		return true;
 	}
+
+
+
 }

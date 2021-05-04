@@ -5,8 +5,7 @@ import javax.validation.constraints.NotNull;
 
 public class UsuarioFilmeOutputModel {
 
-	@NotNull
-	private Long id;
+	
 
 	@NotBlank
 	private String usuario;
@@ -15,15 +14,8 @@ public class UsuarioFilmeOutputModel {
 	private String filme;
 
 	@NotNull
-	private Integer nota;
+	private Double nota;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFilme() {
 		return filme;
@@ -41,11 +33,13 @@ public class UsuarioFilmeOutputModel {
 		this.usuario = usuario;
 	}
 
-	public Integer getNota() {
+	public Double getNota() {
 		return nota;
 	}
 
-	public void setNota(Integer nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
+
+	
 }

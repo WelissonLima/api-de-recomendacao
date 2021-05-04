@@ -1,7 +1,7 @@
 package br.com.lima.api.controle;
 
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -15,66 +15,51 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.repositorio.FilmeRepositorio;
+import br.com.lima.dominio.servico.FilmeServico;
 
 @RestController
 @RequestMapping("/filmes")
 public class FilmeControle {
 
 	@Autowired
-	private FilmeRepositorio filmeRepositorio;
+	private FilmeServico servico;
 
 	@GetMapping
 	public List<Filme> listar() {
-		return filmeRepositorio.findAll();
+		return servico.findAll();
 	}
 
-	@GetMapping("/{filmeId}")
-	public ResponseEntity<Filme> buscar(@PathVariable Long filmeId) {
-		Optional<Filme> filme = filmeRepositorio.findById(filmeId);
+	
+	@GetMapping(value = "/{id}") // REQUISIÇÃO IRÁ ACEITAR UM ID DENTRO DA URL
+	public ResponseEntity<Filme> findById(@PathVariable Long id) {
+		Filme obj = servico.findById(id);
+		
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Filme> create(@Valid @RequestBody Filme filme) {
+		Filme newObj = servico.create(filme);
 
-		if (filme.isPresent()) {
-			return ResponseEntity.ok(filme.get());
-		}
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.created(uri).build();
 	}
 
-	@PostMapping()
-	public Filme adicionar(@Valid @RequestBody Filme filme) {
-		Filme filmeExistente = filmeRepositorio.findByNome(filme.getNome());
-
-		if (filmeExistente != null && !filmeExistente.equals(filme)) {
-			throw new RuntimeException("Existe um filme cadastrado com esse nome");
-		}
-
-		return filmeRepositorio.save(filme);
-	}
-
-	@PutMapping("/{filmeId}")
-	public ResponseEntity<Filme> atualizar(@Valid @PathVariable Long filmeId, @RequestBody Filme filme) {
-
-		if (!filmeRepositorio.existsById(filmeId)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		filme.setId(filmeId);
-		filme = filmeRepositorio.save(filme);
-
-		return ResponseEntity.ok(filme);
-	}
-
-	@DeleteMapping("/{filmeId}")
-	public ResponseEntity<Filme> deletar(@PathVariable Long filmeId) {
-
-		if (!filmeRepositorio.existsById(filmeId)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		filmeRepositorio.deleteById(filmeId);
-
+	
+	@DeleteMapping(value = "/{id}")    
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+	 	servico.delete(id);
 		return ResponseEntity.noContent().build();
+	
+	}
+
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Filme> update(@PathVariable Long id, @RequestBody Filme filme){
+		filme = servico.update(id, filme);
+		return ResponseEntity.ok().body(filme);
 	}
 }

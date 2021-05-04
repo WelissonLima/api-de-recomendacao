@@ -50,36 +50,36 @@ public class TesteConfig implements CommandLineRunner {
 		Filme film10 = new Filme(null, "Shrek");
 		Filme film11 = new Filme(null, "Meu Malvado Favorito");
 
-		UsuarioFilme fu1 = new UsuarioFilme(null, 4, film1, u1);
-		UsuarioFilme fu2 = new UsuarioFilme(null, 4, film3, u1);
-		UsuarioFilme fu3 = new UsuarioFilme(null, 3, film9, u1);
+		UsuarioFilme fu1 = new UsuarioFilme( u1, film1, 4.0);
+		UsuarioFilme fu2 = new UsuarioFilme( u1, film3, 4.0);
+		UsuarioFilme fu3 = new UsuarioFilme( u1, film9, 3.0);
 
-		UsuarioFilme fu4 = new UsuarioFilme(null, 2, film11, u2);
-		UsuarioFilme fu5 = new UsuarioFilme(null, 5, film2, u2);
-		UsuarioFilme fu6 = new UsuarioFilme(null, 4, film1, u2);
+		UsuarioFilme fu4 = new UsuarioFilme(u2, film11, 2.0);
+		UsuarioFilme fu5 = new UsuarioFilme(u2, film2, 5.0);
+		UsuarioFilme fu6 = new UsuarioFilme( u2, film1, 4.0);
 
-		UsuarioFilme fu7 = new UsuarioFilme(null, 2, film3, u3);
-		UsuarioFilme fu8 = new UsuarioFilme(null, 4, film10, u3);
-		UsuarioFilme fu9 = new UsuarioFilme(null, 1, film8, u3);
-		UsuarioFilme fu10 = new UsuarioFilme(null, 5, film2, u3);
+		UsuarioFilme fu7 = new UsuarioFilme(u3, film3, 2.0);
+		UsuarioFilme fu8 = new UsuarioFilme(u3, film10, 4.0);
+		UsuarioFilme fu9 = new UsuarioFilme(u3, film8, 1.0);
+		UsuarioFilme fu10 = new UsuarioFilme(u3, film2, 3.0);
 
-		UsuarioFilme fu11 = new UsuarioFilme(null, 2, film4, u4);
-		UsuarioFilme fu12 = new UsuarioFilme(null, 4, film8, u4);
-		UsuarioFilme fu13 = new UsuarioFilme(null, 3, film1, u4);		
-		UsuarioFilme fu14 = new UsuarioFilme(null, 1, film5, u4);
+		UsuarioFilme fu11 = new UsuarioFilme(u4, film4, 2.0);
+		UsuarioFilme fu12 = new UsuarioFilme(u4, film8, 4.0);
+		UsuarioFilme fu13 = new UsuarioFilme(u4, film1, 3.0);		
+		UsuarioFilme fu14 = new UsuarioFilme(u4, film5, 1.0);
 
-		UsuarioFilme fu15 = new UsuarioFilme(null, 5, film10, u5);
-		UsuarioFilme fu16 = new UsuarioFilme(null, 2, film11, u5);
-		UsuarioFilme fu17 = new UsuarioFilme(null, 4, film9, u5);
+		UsuarioFilme fu15 = new UsuarioFilme(u5, film10, 5.0);
+		UsuarioFilme fu16 = new UsuarioFilme(u5, film11, 2.0);
+		UsuarioFilme fu17 = new UsuarioFilme(u5, film9, 4.0);
 		
-		UsuarioFilme fu18 = new UsuarioFilme(null, 2, film3, u6);
-		UsuarioFilme fu19 = new UsuarioFilme(null, 3, film11, u6);
-		UsuarioFilme fu20 = new UsuarioFilme(null, 5, film7, u6);
+		UsuarioFilme fu18 = new UsuarioFilme(u6, film3, 2.0);
+		UsuarioFilme fu19 = new UsuarioFilme(u6, film11, 3.0);
+		UsuarioFilme fu20 = new UsuarioFilme(u6, film7, 5.0);
 
-		UsuarioFilme fu21 = new UsuarioFilme(null, 1, film8, u7);
-		UsuarioFilme fu22 = new UsuarioFilme(null, 3, film2, u7);
-		UsuarioFilme fu23 = new UsuarioFilme(null, 2, film4, u7);
-		UsuarioFilme fu24 = new UsuarioFilme(null, 3, film3, u7);
+		UsuarioFilme fu21 = new UsuarioFilme(u7, film8, 1.0);
+		UsuarioFilme fu22 = new UsuarioFilme(u7, film2, 3.0);
+		UsuarioFilme fu23 = new UsuarioFilme(u7, film4, 2.0);
+		UsuarioFilme fu24 = new UsuarioFilme(u7, film3, 3.0);
 		
 		user.saveAll(Arrays.asList(u1, u2, u3, u4, u5, u6, u7));
 		film.saveAll(Arrays.asList(film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11));

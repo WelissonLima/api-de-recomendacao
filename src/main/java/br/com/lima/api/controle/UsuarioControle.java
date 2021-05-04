@@ -1,10 +1,8 @@
 package br.com.lima.api.controle;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -18,105 +16,59 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.lima.api.modelo.FilmeOutput;
-import br.com.lima.api.modelo.FilmeResumoModelo;
 import br.com.lima.api.modelo.UsuarioOutputModel;
 import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.modelo.UsuarioFilme;
-import br.com.lima.dominio.repositorio.UsuarioRepositorio;
+import br.com.lima.dominio.servico.UsuarioServico;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioControle {
 
 	@Autowired
-	private UsuarioRepositorio usuarioRepositorio;
+	private UsuarioServico servico;
 
 	@GetMapping()
-	public List<Usuario> listar() {
-		return usuarioRepositorio.findAll();
+	public ResponseEntity<List<UsuarioOutputModel>> findAll() {
+		List<UsuarioOutputModel> listar = servico.findAll().stream().map(obj -> new UsuarioOutputModel(obj))
+				.collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(listar);
 	}
+	
 
-	@GetMapping("/{usuarioId}")
-	public ResponseEntity<UsuarioOutputModel> buscar(@PathVariable Long usuarioId) {
-		UsuarioOutputModel usuarioOutput = new UsuarioOutputModel();
-		Optional<Usuario> usuarioExistente = usuarioRepositorio.findById(usuarioId);
-
-		if (usuarioExistente.isPresent()) {
-			Usuario usuario = usuarioExistente.get();
-			Set<FilmeOutput> filmes = formartarSaidaDeFilmes(usuario);
-
-			usuarioOutput.setId(usuarioId);
-			usuarioOutput.setNome(usuario.getNome());
-			usuarioOutput.setFilmes(filmes);
-
-			return ResponseEntity.ok(usuarioOutput);
-		}
-
-		return ResponseEntity.notFound().build();
+	@GetMapping(value = "/{id}") 
+	public ResponseEntity<Usuario> findById(@PathVariable Long id) {
+		Usuario obj = servico.findById(id);
+		
+		return ResponseEntity.ok().body(obj);
 	}
-
+	
+	
 	@PostMapping
-	public Usuario adicionar(@Valid @RequestBody Usuario usuario) {
-		Usuario usuarioExistente = usuarioRepositorio.findByEmail(usuario.getEmail());
+	public ResponseEntity<UsuarioOutputModel> create(@Valid @RequestBody UsuarioOutputModel objDTO) {
+		Usuario newObj = servico.create(objDTO);
 
-		if (usuarioExistente != null && !usuarioExistente.equals(usuario)) {
-			throw new RuntimeException("Existe um usuário cadastrado com esse email.");
-		}
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 
-		return usuarioRepositorio.save(usuario);
+		return ResponseEntity.created(uri).build();
 	}
-
-	@PutMapping("/{usuarioId}")
-	public ResponseEntity<Usuario> atualizar(@Valid @PathVariable Long usuarioId, @RequestBody Usuario usuario) {
-
-		if (!usuarioRepositorio.existsById(usuarioId)) {
-			return ResponseEntity.notFound().build();
-		}
-
-		usuario.setId(usuarioId);
-		usuario = usuarioRepositorio.save(usuario);
-
-		return ResponseEntity.ok(usuario);
-	}
-
-	@DeleteMapping("/{usuarioId}")
-	public ResponseEntity<Usuario> deletar(@PathVariable Long usuarioId) {
-
-		if (!usuarioRepositorio.existsById(usuarioId)) {
-			throw new RuntimeException("Esse usuário não existe.");
-		}
-
-		usuarioRepositorio.deleteById(usuarioId);
-
+	
+	
+	@DeleteMapping(value = "/{id}")    
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+	 	servico.delete(id);
 		return ResponseEntity.noContent().build();
+	
 	}
-
-	// Service
-	private List<FilmeResumoModelo> buscarFilmes(Set<UsuarioFilme> usuarioFilmes) {
-		List<FilmeResumoModelo> filmes = new ArrayList<>();
-
-		for (UsuarioFilme usuarioFilme : usuarioFilmes) {
-			FilmeResumoModelo filmeResumoModelo = new FilmeResumoModelo();
-			filmeResumoModelo.setNota(usuarioFilme.getNota());
-			filmeResumoModelo.setFilme(usuarioFilme.getFilme());
-
-			filmes.add(filmeResumoModelo);
-		}
-
-		return filmes;
+	
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario){
+		usuario = servico.update(id, usuario);
+		return ResponseEntity.ok().body(usuario);
 	}
-
-	private Set<FilmeOutput> formartarSaidaDeFilmes(Usuario usuario) {
-		Set<FilmeOutput> filmesFormatados = new HashSet<FilmeOutput>();
-		List<FilmeResumoModelo> filmes = buscarFilmes(usuario.getUsuarioFilmes());
-
-		for (FilmeResumoModelo filme : filmes) {
-			filmesFormatados.add(new FilmeOutput(filme.getFilme().getNome(), filme.getNota()));
-		}
-
-		return filmesFormatados;
-	}
+	
 
 }

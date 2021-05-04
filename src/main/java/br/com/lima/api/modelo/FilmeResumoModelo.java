@@ -8,16 +8,16 @@ import br.com.lima.dominio.modelo.Filme;
 public class FilmeResumoModelo {
 
 	@NotNull
-	private int nota;
+	private Double nota;
 
 	@NotBlank
 	private Filme filme;
 
-	public int getNota() {
+	public Double getNota() {
 		return nota;
 	}
 
-	public void setNota(int nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
 
@@ -53,5 +53,7 @@ public class FilmeResumoModelo {
 			return false;
 		return true;
 	}
+
+
 
 }
