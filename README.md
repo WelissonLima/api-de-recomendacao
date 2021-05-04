@@ -26,12 +26,12 @@ A aplicação consiste em fazer uma recomendação de filmes, assistidos por um 
 - BackEnd: Heroku (Ao finalizar o projeto)
 - Banco de dados: MySQL
 
-#Como executar o projeto
+# Como executar o projeto
 
 ## BackEnd
 Pré-requisitos: Java 11
 
-### 1ª Opção: Rodar direto pelo prompt
+### Rodar direto pelo cmd
 
 ```bash
 # clonar o repositório do projeto
@@ -55,9 +55,9 @@ java -jar projeto.jar
 ### <i>ATENÇÃO: Por Padrão, o projeto irá rodar na porta 8080. (localhost:8080)</i>
 
 
-<h2><b>
-Endpoints
-</b></h2>
+
+
+# <b>Endpoints</b>
 
 | Método  |  URL  | Descrição  |
 | ------------------- | ------------------- | -------------------- |
