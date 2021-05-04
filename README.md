@@ -13,6 +13,9 @@ Recomendação de Filmes é uma aplicação backEnd construída durante o 4° se
 A aplicação consiste em fazer uma recomendação de filmes, assistidos por um determinado usuário, baseando-se na similaridade que houver entre o que recomenda, e o que vai recebeer a recomendação. A similaridade entre os usuários será feita com base nas semelhanças entre as notas que os usuários darão para os Filmes assistidos. Dessa forma a API irá recomendar um filme fundamentado no seu gosto.
 
 
+# Modelo Conceitual do Projeto
+![Modelo%20conceitual](https://github.com/WelissonLima/api-de-recomendacao/blob/master/assets/Modelo%20conceitual.png)
+
 # Tecnologias utilizadas 
 
 ## BackEnd
