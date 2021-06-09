@@ -1,4 +1,4 @@
-package br.com.lima.dominio.servico;
+package br.com.lima.api.servicos;
 
 import org.springframework.stereotype.Service;
 

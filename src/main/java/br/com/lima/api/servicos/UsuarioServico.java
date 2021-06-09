@@ -1,4 +1,4 @@
-package br.com.lima.dominio.servico;
+package br.com.lima.api.servicos;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.lima.api.modelo.UsuarioOutputModel;
-import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.repositorio.UsuarioRepositorio;
+import br.com.lima.api.domains.Usuario;
+import br.com.lima.api.dtos.UsuarioOutputModel;
+import br.com.lima.api.repositorios.UsuarioRepositorio;
 
 @Service
 public class UsuarioServico {

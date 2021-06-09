@@ -1,4 +1,4 @@
-package br.com.lima.api.controle;
+package br.com.lima.api.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.lima.api.modelo.SimilaridadeOutputModelo;
-import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.repositorio.UsuarioRepositorio;
-import br.com.lima.dominio.servico.SimilaridadeServico;
+import br.com.lima.api.domains.Usuario;
+import br.com.lima.api.dtos.SimilaridadeOutputModelo;
+import br.com.lima.api.repositorios.UsuarioRepositorio;
+import br.com.lima.api.servicos.SimilaridadeServico;
 
 @Controller
 @RequestMapping("/similaridade")

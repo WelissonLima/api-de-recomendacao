@@ -8,12 +8,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.modelo.UsuarioFilme;
-import br.com.lima.dominio.repositorio.FilmeRepositorio;
-import br.com.lima.dominio.repositorio.UsuarioFilmeRepositorio;
-import br.com.lima.dominio.repositorio.UsuarioRepositorio;
+import br.com.lima.api.domains.Filme;
+import br.com.lima.api.domains.Usuario;
+import br.com.lima.api.domains.UsuarioFilme;
+import br.com.lima.api.repositorios.FilmeRepositorio;
+import br.com.lima.api.repositorios.UsuarioFilmeRepositorio;
+import br.com.lima.api.repositorios.UsuarioRepositorio;
 
 @Configuration
 @Profile("test")

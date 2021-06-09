@@ -1,4 +1,4 @@
-package br.com.lima.dominio.servico;
+package br.com.lima.api.servicos;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.repositorio.FilmeRepositorio;
+import br.com.lima.api.domains.Filme;
+import br.com.lima.api.repositorios.FilmeRepositorio;
 
 @Service
 public class FilmeServico {

@@ -1,4 +1,4 @@
-package br.com.lima.dominio.modelo;
+package br.com.lima.api.domains;
 
 import java.io.Serializable;
 import java.net.URL;

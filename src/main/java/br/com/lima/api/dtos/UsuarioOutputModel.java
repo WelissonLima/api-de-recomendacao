@@ -1,10 +1,10 @@
-package br.com.lima.api.modelo;
+package br.com.lima.api.dtos;
 
 import javax.validation.constraints.NotBlank;
 
 import com.sun.istack.NotNull;
 
-import br.com.lima.dominio.modelo.Usuario;
+import br.com.lima.api.domains.Usuario;
 
 public class UsuarioOutputModel {
 

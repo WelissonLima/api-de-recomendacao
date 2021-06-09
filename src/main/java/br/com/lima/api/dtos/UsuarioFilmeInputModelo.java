@@ -1,4 +1,4 @@
-package br.com.lima.api.modelo;
+package br.com.lima.api.dtos;
 
 import javax.validation.constraints.NotNull;
 

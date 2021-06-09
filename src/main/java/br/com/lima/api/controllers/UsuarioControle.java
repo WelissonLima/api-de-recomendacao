@@ -1,7 +1,8 @@
-package br.com.lima.api.controle;
+package br.com.lima.api.controllers;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -17,38 +18,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.servico.FilmeServico;
+import br.com.lima.api.domains.Usuario;
+import br.com.lima.api.dtos.UsuarioOutputModel;
+import br.com.lima.api.servicos.UsuarioServico;
 
 @RestController
-@RequestMapping("/filmes")
-public class FilmeControle {
+@RequestMapping("/usuarios")
+public class UsuarioControle {
 
 	@Autowired
-	private FilmeServico servico;
+	private UsuarioServico servico;
 
-	@GetMapping
-	public List<Filme> listar() {
-		return servico.findAll();
+	@GetMapping()
+	public ResponseEntity<List<UsuarioOutputModel>> findAll() {
+		List<UsuarioOutputModel> listar = servico.findAll().stream().map(obj -> new UsuarioOutputModel(obj))
+				.collect(Collectors.toList());
+
+		return ResponseEntity.ok().body(listar);
 	}
-
 	
-	@GetMapping(value = "/{id}") // REQUISIÇÃO IRÁ ACEITAR UM ID DENTRO DA URL
-	public ResponseEntity<Filme> findById(@PathVariable Long id) {
-		Filme obj = servico.findById(id);
+
+	@GetMapping(value = "/{id}") 
+	public ResponseEntity<Usuario> findById(@PathVariable Long id) {
+		Usuario obj = servico.findById(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	
 	@PostMapping
-	public ResponseEntity<Filme> create(@Valid @RequestBody Filme filme) {
-		Filme newObj = servico.create(filme);
+	public ResponseEntity<UsuarioOutputModel> create(@Valid @RequestBody UsuarioOutputModel objDTO) {
+		Usuario newObj = servico.create(objDTO);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 
 		return ResponseEntity.created(uri).build();
 	}
-
+	
 	
 	@DeleteMapping(value = "/{id}")    
 	public ResponseEntity<Void> delete(@PathVariable Long id){
@@ -56,10 +62,13 @@ public class FilmeControle {
 		return ResponseEntity.noContent().build();
 	
 	}
-
+	
+	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Filme> update(@PathVariable Long id, @RequestBody Filme filme){
-		filme = servico.update(id, filme);
-		return ResponseEntity.ok().body(filme);
+	public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario){
+		usuario = servico.update(id, usuario);
+		return ResponseEntity.ok().body(usuario);
 	}
+	
+
 }

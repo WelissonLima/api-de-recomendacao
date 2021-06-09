@@ -1,4 +1,4 @@
-package br.com.lima.dominio.modelo;
+package br.com.lima.api.domains;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.lima.dominio.modelo.PK.UsuarioFilmePK;
+import br.com.lima.api.domains.PK.UsuarioFilmePK;
 
 
 @Entity
