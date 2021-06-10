@@ -40,16 +40,16 @@ public class TesteConfig implements CommandLineRunner {
 		Usuario u7 = new Usuario(null, "João Gabriel", "joaoGabriel@gmail.com", "61999078634");
 
 		Filme film1 = new Filme(null, "Harry Potter", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
-		Filme film2 = new Filme(null, "Velozes e Furiosos", (new URL("https://www.adorocinema.com/filmes/filme-29173/")));
-		Filme film3 = new Filme(null, "Norbit", (new URL("https://www.adorocinema.com/filmes/filme-60982/")));
-		Filme film4 = new Filme(null, "Kong", (new URL("https://www.adorocinema.com/filmes/filme-46718/")));
-		Filme film5 = new Filme(null, "GodZilla", (new URL("https://www.adorocinema.com/filmes/filme-179616/")));
-		Filme film6 = new Filme(null, "Anabelle", (new URL("https://www.adorocinema.com/filmes/filme-225218/")));
-		Filme film7 = new Filme(null, "Aquaman", (new URL("https://www.adorocinema.com/filmes/filme-208692/")));
-		Filme film8 = new Filme(null, "Invocação do Mal", (new URL("https://www.adorocinema.com/filmes/filme-203607/")));
-		Filme film9 = new Filme(null, "Sr & Sra Smith", (new URL("https://www.adorocinema.com/filmes/filme-51539/")));
-		Filme film10 = new Filme(null, "Shrek", (new URL("https://www.adorocinema.com/filmes/filme-27415/")));
-		Filme film11 = new Filme(null, "Meu Malvado Favorito", (new URL("https://www.adorocinema.com/filmes/filme-140623/")));
+		Filme film2 = new Filme(null, "Velozes e Furiosos", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film3 = new Filme(null, "Norbit", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film4 = new Filme(null, "Kong", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film5 = new Filme(null, "GodZilla", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film6 = new Filme(null, "Anabelle", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film7 = new Filme(null, "Aquaman", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film8 = new Filme(null, "Invocação do Mal", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film9 = new Filme(null, "Sr & Sra Smith", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film10 = new Filme(null, "Shrek", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
+		Filme film11 = new Filme(null, "Meu Malvado Favorito", (new URL("https://www.adorocinema.com/filmes/filme-29276/")));
 
 		UsuarioFilme fu1 = new UsuarioFilme( u1, film1, 4.0);
 		UsuarioFilme fu2 = new UsuarioFilme( u1, film3, 4.0);
