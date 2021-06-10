@@ -1,9 +1,9 @@
-package br.com.lima.api.modelo;
+package br.com.lima.api.dtos;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.lima.dominio.modelo.Filme;
+import br.com.lima.api.domains.Filme;
 
 public class FilmeResumoModelo {
 

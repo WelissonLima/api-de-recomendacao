@@ -1,4 +1,4 @@
-package br.com.lima.dominio.modelo.PK;
+package br.com.lima.api.domains.PK;
 
 import java.io.Serializable;
 
@@ -6,8 +6,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.modelo.Usuario;
+import br.com.lima.api.domains.Filme;
+import br.com.lima.api.domains.Usuario;
 
 @Embeddable
 public class UsuarioFilmePK implements Serializable {

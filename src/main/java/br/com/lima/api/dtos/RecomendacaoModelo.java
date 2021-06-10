@@ -1,11 +1,9 @@
-package br.com.lima.api.modelo;
+package br.com.lima.api.dtos;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class UsuarioFilmeOutputModel {
-
-	
+public class RecomendacaoModelo {
 
 	@NotBlank
 	private String usuario;
@@ -16,13 +14,11 @@ public class UsuarioFilmeOutputModel {
 	@NotNull
 	private Double nota;
 
-
-	public String getFilme() {
-		return filme;
-	}
-
-	public void setFilme(String filme) {
+	public RecomendacaoModelo(@NotBlank String usuario, @NotBlank String filme, @NotNull Double nota) {
+		super();
+		this.usuario = usuario;
 		this.filme = filme;
+		this.nota = nota;
 	}
 
 	public String getUsuario() {
@@ -33,6 +29,14 @@ public class UsuarioFilmeOutputModel {
 		this.usuario = usuario;
 	}
 
+	public String getFilme() {
+		return filme;
+	}
+
+	public void setFilme(String filme) {
+		this.filme = filme;
+	}
+
 	public Double getNota() {
 		return nota;
 	}
@@ -41,5 +45,4 @@ public class UsuarioFilmeOutputModel {
 		this.nota = nota;
 	}
 
-	
 }

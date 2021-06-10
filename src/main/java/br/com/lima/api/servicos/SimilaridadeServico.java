@@ -1,4 +1,4 @@
-package br.com.lima.dominio.servico;
+package br.com.lima.api.servicos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import br.com.lima.api.modelo.FilmeResumoModelo;
-import br.com.lima.api.modelo.SimilaridadeOutputModelo;
-import br.com.lima.dominio.modelo.Filme;
-import br.com.lima.dominio.modelo.Usuario;
-import br.com.lima.dominio.modelo.UsuarioFilme;
+import br.com.lima.api.domains.Filme;
+import br.com.lima.api.domains.Usuario;
+import br.com.lima.api.domains.UsuarioFilme;
+import br.com.lima.api.dtos.FilmeResumoModelo;
+import br.com.lima.api.dtos.SimilaridadeOutputModelo;
 
 @Service
 public class SimilaridadeServico {
