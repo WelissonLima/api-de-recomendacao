@@ -7,10 +7,12 @@ import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.lima.domains.Filme;
 import br.com.lima.repositorios.FilmeRepositorio;
+import br.com.lima.servicos.exceptions.DatabaseException;
 import br.com.lima.servicos.exceptions.ResourceNotFoundException;
 
 @Service
@@ -37,9 +39,10 @@ public class FilmeServico {
 		findById(id);
 		try {
 			repositorio.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new br.com.lima.servicos.exceptions.DataIntegrityViolationException(
-					"Usuário não pode ser deletado! Possui filmes associados");
+			throw new DatabaseException("Filme não pode ser deletado! Possui Usuarios associados");
 		}
 	}
 
