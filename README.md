@@ -65,13 +65,14 @@ java -jar projeto.jar
 | Método  |  URL  | Descrição  |
 | ------------------- | ------------------- | -------------------- |
 | GET  | https://api-recomendacao.herokuapp.com/usuarios | Listar os usuários. |
+| GET |  https://api-recomendacao.herokuapp.com/usuarios/{ID} | Listar um determinado usuário e os filmes Assistidos|
 | POST | https://api-recomendacao.herokuapp.com/usuarios | Adicionar um novo Usuario |
-| PUT | https://api-recomendacao.herokuapp.com/usuarios | Atualizar os dados de um  usuário. |
-| DELETE | https://api-recomendacao.herokuapp.com/usuarios | Deletar um usuário. |
-| GET |  https://api-recomendacao.herokuapp.com/usuarios/{ID} | Listar os filmes de um determinado usuário. |
+| PUT | https://api-recomendacao.herokuapp.com/usuarios/{id} | Atualizar os dados de um  usuário. |
+| DELETE | https://api-recomendacao.herokuapp.com/usuarios/{id} | Deletar um usuário. |
 | GET |  https://api-recomendacao.herokuapp.com/filmes | Listar Todos os filmes|
+| GET |  https://api-recomendacao.herokuapp.com/filmes/{id} | Listar um filme pelo id|
 | POST |  https://api-recomendacao.herokuapp.com/filmes | Adicionar um novo filme |
-| PUT | https://api-recomendacao.herokuapp.com/filmes | Atualizar um filme |
-| DELETE | https://api-recomendacao.herokuapp.com/filmes | Deletar um filme |
+| PUT | https://api-recomendacao.herokuapp.com/filmes/{id} | Atualizar um filme |
+| DELETE | https://api-recomendacao.herokuapp.com/filmes/{id} | Deletar um filme |
 | GET |  https://api-recomendacao.herokuapp.com/similaridade/{usuarioID} | Mostra a similaridade de um usuário com os outros |
 | GET  |  https://api-recomendacao.herokuapp.com/recomendacao/{usuarioID} |  Recomenda alguns filmes para um determinado usuário. |
