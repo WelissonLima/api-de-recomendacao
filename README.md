@@ -6,7 +6,7 @@
 
 # Sobre o projeto
 
-(colocar link do projeto no Heroku - quando estiver lá)
+https://api-recomendacao.herokuapp.com
 
 Recomendação de Filmes é uma aplicação backEnd construída durante o 4° semestre da Faculdade, na Disciplina de Programação Orientada a Objetos.
 
@@ -64,14 +64,14 @@ java -jar projeto.jar
 
 | Método  |  URL  | Descrição  |
 | ------------------- | ------------------- | -------------------- |
-| GET  | http://localhost:8080/usuarios | Listar os usuários. |
-| POST | http://localhost:8080/usuarioso | Adicionar um novo Usuario |
-| PUT | http://localhost:8080/usuarios | Atualizar os dados de um  usuário. |
-| DELETE | http://localhost:8080/usuarios | Deletar um usuário. |
-| GET |  http://localhost:8080/usuarios/{usuarioID} | Listar os filmes de um determinado usuário. |
-| GET |  http://localhost:8080/filmes | Listar Todos os filmes|
-| POST |  http://localhost:8080/filmes | Adicionar um novo filme |
-| PUT |  http://localhost:8080/filmes | Atualizar um filme |
-| DELETE |  http://localhost:8080/filmes | Deletar um filme |
-| GET |  http://localhost:8080/similaridade/{usuarioID} | Mostra a similaridade de um usuário com os outros |
-| GET  |  http://localhost:8080/recomendacao/{usuarioID} |  Recomenda alguns filmes para um determinado usuário. |
+| GET  | https://api-recomendacao.herokuapp.com/usuarios | Listar os usuários. |
+| POST | https://api-recomendacao.herokuapp.com/usuarios | Adicionar um novo Usuario |
+| PUT | https://api-recomendacao.herokuapp.com/usuarios | Atualizar os dados de um  usuário. |
+| DELETE | https://api-recomendacao.herokuapp.com/usuarios | Deletar um usuário. |
+| GET |  https://api-recomendacao.herokuapp.com/usuarios/{ID} | Listar os filmes de um determinado usuário. |
+| GET |  https://api-recomendacao.herokuapp.com/filmes | Listar Todos os filmes|
+| POST |  https://api-recomendacao.herokuapp.com/filmes | Adicionar um novo filme |
+| PUT | https://api-recomendacao.herokuapp.com/filmes | Atualizar um filme |
+| DELETE | https://api-recomendacao.herokuapp.com/filmes | Deletar um filme |
+| GET |  https://api-recomendacao.herokuapp.com/similaridade/{usuarioID} | Mostra a similaridade de um usuário com os outros |
+| GET  |  https://api-recomendacao.herokuapp.com/recomendacao/{usuarioID} |  Recomenda alguns filmes para um determinado usuário. |
