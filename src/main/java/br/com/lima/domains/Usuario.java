@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
 	private String email;
 	private String telefone;
 
-	@OneToMany(mappedBy = "id.usuario") //ID pega na classe UsuarioFilme
+	@OneToMany(mappedBy = "id.usuario") 
 	private Set<UsuarioFilme> filmes = new HashSet<>();
 	
 	

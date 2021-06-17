@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "tb_filme") // PQ ORDER É DA CLASSE JAVA E PODE DAR CONFLITO, ENTÃO RENOMEIA A TB
+@Table(name = "tb_filme") 
 public class Filme implements Serializable {
 
 	private static final long serialVersionUID = 1L;
